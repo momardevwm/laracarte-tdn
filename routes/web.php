@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Mail\ContactMessageCreated;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PagesController@home')->name('home');
 Route::get('/about','PagesController@about')->name('about');
 Route::get('/contact','MessageController@create')->name('create');
+Route::post('/contact','MessageController@store')->name('store');
+Route::get('/test-email',function(){
+return new ContactMessageCreated('Momar dieng','momar.dieng@uadb.edu.sn','Merci pour laracarte');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
